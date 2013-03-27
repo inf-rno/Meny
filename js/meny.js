@@ -299,12 +299,13 @@ var Meny = {
 					isOpen = true;
 
 					Meny.addClass( dom.wrapper, 'meny-active' );
-
+					if(config.cover){
 					dom.cover.style.height = dom.contents.scrollHeight + 'px';
 					dom.cover.style.visibility = 'visible';
-
+					}
 					// Use transforms and transitions if available...
 					if( supports3DTransforms && config.use3D ) {
+						if(config.cover)
 						dom.cover.style.opacity = 1;
 
 						dom.contents.style[ Meny.prefix( 'transform' ) ] = contentsTransformOpened;
@@ -316,8 +317,10 @@ var Meny = {
 						menuAnimation = Meny.animate( dom.menu, menuStyleOpened, 500 );
 						contentsAnimation && contentsAnimation.stop();
 						contentsAnimation = Meny.animate( dom.contents, contentsStyleOpened, 500 );
-						coverAnimation && coverAnimation.stop();
-						coverAnimation = Meny.animate( dom.cover, { opacity: 1 }, 500 );
+						if(config.cover){
+							coverAnimation && coverAnimation.stop();
+							coverAnimation = Meny.animate( dom.cover, { opacity: 1 }, 500 );
+						}
 					}
 
 					Meny.dispatchEvent( dom.menu, 'open' );
