@@ -349,9 +349,11 @@ var Meny = {
 						menuAnimation && menuAnimation.stop();
 						menuAnimation = Meny.animate( dom.menu, menuStyleClosed, 500 );
 						contentsAnimation && contentsAnimation.stop();
-						contentsAnimation = Meny.animate( dom.contents, contentsStyleClosed, 500 );
-						coverAnimation && coverAnimation.stop();
-						coverAnimation = Meny.animate( dom.cover, { opacity: 0 }, 500, function() { dom.cover.style.visibility = 'hidden'; } );
+						contentsAnimation = Meny.animate( dom.contents, contentsStyleClosed, 500 );	
+						if(config.cover)
+							coverAnimation && coverAnimation.stop();
+							coverAnimation = Meny.animate( dom.cover, { opacity: 0 }, 500, function() { dom.cover.style.visibility = 'hidden'; } );
+						}	
 					}
 
 					Meny.dispatchEvent( dom.menu, 'close' );
