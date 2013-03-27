@@ -38,6 +38,7 @@ var Meny = {
 				width: 300,
 				height: 300,
 				bindMoveEvents:true, 
+				use3D:true,
 				position: POSITION_L,
 				threshold: 40,
 				overlap: 6,
@@ -200,7 +201,7 @@ var Meny = {
 				}
 				catch( e ) {}
 
-				if( supports3DTransforms ) {
+				if( supports3DTransforms && config.use3D) {
 					dom.cover.style[ Meny.prefix( 'transition' ) ] = 'all ' + config.transitionDuration +' '+ config.transitionEasing;
 				}
 
@@ -242,7 +243,7 @@ var Meny = {
 				style.display = 'block';
 				style.zIndex = 1;
 
-				if( supports3DTransforms ) {
+				if( supports3DTransforms && config.use3D ) {
 					style[ Meny.prefix( 'transform' ) ] = menuTransformClosed;
 					style[ Meny.prefix( 'transformOrigin' ) ] = menuTransformOrigin;
 					style[ Meny.prefix( 'transition' ) ] = 'all ' + config.transitionDuration +' '+ config.transitionEasing;
@@ -260,7 +261,7 @@ var Meny = {
 				// Shorthand
 				var style = dom.contents.style;
 
-				if( supports3DTransforms ) {
+				if( supports3DTransforms && config.use3D ) {
 					style[ Meny.prefix( 'transform' ) ] = contentsTransformClosed;
 					style[ Meny.prefix( 'transformOrigin' ) ] = contentsTransformOrigin;
 					style[ Meny.prefix( 'transition' ) ] = 'all ' + config.transitionDuration +' '+ config.transitionEasing;
@@ -301,7 +302,7 @@ var Meny = {
 					dom.cover.style.visibility = 'visible';
 
 					// Use transforms and transitions if available...
-					if( supports3DTransforms ) {
+					if( supports3DTransforms && config.use3D ) {
 						dom.cover.style.opacity = 1;
 
 						dom.contents.style[ Meny.prefix( 'transform' ) ] = contentsTransformOpened;
@@ -331,7 +332,7 @@ var Meny = {
 					Meny.removeClass( dom.wrapper, 'meny-active' );
 
 					// Use transforms and transitions if available...
-					if( supports3DTransforms ) {
+					if( supports3DTransforms && config.use3D ) {
 						dom.cover.style.visibility = 'hidden';
 						dom.cover.style.opacity = 0;
 
