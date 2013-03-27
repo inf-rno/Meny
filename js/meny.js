@@ -40,6 +40,7 @@ var Meny = {
 				bindMoveEvents:true, 
 				use3D:true,
 				position: POSITION_L,
+				cover:true,
 				threshold: 40,
 				overlap: 6,
 				transitionDuration: '0.5s',
@@ -88,7 +89,8 @@ var Meny = {
 
 			setupPositions();
 			setupWrapper();
-			setupCover();
+			if(config.cover)
+				setupCover();
 			setupMenu();
 			setupContents();
 			
