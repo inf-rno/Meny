@@ -37,6 +37,7 @@ var Meny = {
 			var config = {
 				width: 300,
 				height: 300,
+				bindMoveEvents:true, 
 				position: POSITION_L,
 				threshold: 40,
 				overlap: 6,
@@ -89,8 +90,9 @@ var Meny = {
 			setupCover();
 			setupMenu();
 			setupContents();
-
+			
 			bindEvents();
+			
 
 			/**
 			 * Prepares the transforms for the current positioning
@@ -280,7 +282,10 @@ var Meny = {
 
 				Meny.bindEvent( document, 'mousedown', onMouseDown );
 				Meny.bindEvent( document, 'mouseup', onMouseUp );
-				Meny.bindEvent( document, 'mousemove', onMouseMove );
+				
+				if(config.bindMoveEvents){
+					Meny.bindEvent( document, 'mousemove', onMouseMove );
+				}
 			}
 
 			/**
